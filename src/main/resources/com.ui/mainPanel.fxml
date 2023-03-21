@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="866.0" prefWidth="1369.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <items>
+      <SplitPane dividerPositions="0.2025462962962963, 0.2534722222222222, 0.42592592592592593" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="168.0" prefWidth="405.0">
+               <children>
+                  <TextField layoutX="23.0" layoutY="14.0" prefHeight="36.0" prefWidth="160.0" promptText="客户数：" />
+                  <TextField layoutX="223.0" layoutY="14.0" prefHeight="36.0" prefWidth="160.0" promptText="资源数：" />
+                  <TextField layoutX="24.0" layoutY="66.0" prefHeight="36.0" prefWidth="360.0" promptText="种子(随机则不输入)：" />
+                  <Button layoutX="46.0" layoutY="118.0" mnemonicParsing="false" text="进行初始化" />
+                  <Button layoutX="246.0" layoutY="118.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="114.0" text="清空" />
+               </children>
+            </AnchorPane>
+            <Label prefHeight="106.0" prefWidth="36.0" text="银行" />
+            <TitledPane animated="false" prefHeight="683.0" prefWidth="405.0" text=" 拥有资源表">
+               <content>
+                  <TableView prefHeight="200.0" prefWidth="200.0">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="资源1" />
+                        <TableColumn prefWidth="75.0" />
+                     </columns>
+                  </TableView>
+               </content>
+            </TitledPane>
+            <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="420.0" prefWidth="405.0">
+               <items>
+                  <ComboBox prefHeight="36.0" prefWidth="402.0" />
+                  <SplitPane dividerPositions="0.3333333333333333, 0.6666666666666666" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+                    <items>
+                        <TitledPane animated="false" prefHeight="388.0" prefWidth="400.0" text="所需资源表">
+                           <content>
+                              <TableView prefHeight="200.0" prefWidth="200.0">
+                                <columns>
+                                  <TableColumn prefWidth="75.0" text="C1" />
+                                  <TableColumn prefWidth="75.0" text="C2" />
+                                </columns>
+                              </TableView>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" prefHeight="388.0" prefWidth="400.0" text="已有资源表">
+                           <content>
+                              <TableView prefHeight="200.0" prefWidth="200.0">
+                                <columns>
+                                  <TableColumn prefWidth="75.0" text="C1" />
+                                  <TableColumn prefWidth="75.0" text="C2" />
+                                </columns>
+                              </TableView>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" prefHeight="388.0" prefWidth="400.0" text="所需时间表">
+                           <content>
+                              <TableView prefHeight="200.0" prefWidth="200.0">
+                                 <columns>
+                                    <TableColumn prefWidth="75.0" text="C1" />
+                                    <TableColumn prefWidth="75.0" text="C2" />
+                                 </columns>
+                              </TableView>
+                           </content>
+                        </TitledPane>
+                    </items>
+                  </SplitPane>
+               </items>
+            </SplitPane>
+        </items>
+      </SplitPane>
+      <TableView prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn prefWidth="79.0" text="C1" />
+          <TableColumn minWidth="0.0" prefWidth="78.0" text="C2" />
+        </columns>
+      </TableView>
+   </items>
+</SplitPane>
