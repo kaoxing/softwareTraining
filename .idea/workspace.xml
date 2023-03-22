@@ -4,16 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7e0984f-8c1c-4e43-831d-d820f586ac66" name="Changes" comment="需求分析文档">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/softwaretraining/PlayController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/initialize/MainInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/objects/Bank.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/objects/Consumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/objects/Source.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rand/Randomer.java" afterDir="false" />
+    <list default="true" id="e7e0984f-8c1c-4e43-831d-d820f586ac66" name="Changes" comment="前端UI界面">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/softwaretraining/MainApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/softwaretraining/MainController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/generate/SafeOrderGenerate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/initialize/ConsumerFrameInit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/initialize/SourceList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/objects/Resource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/validCheck/Checker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/softwaretraining/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/softwaretraining/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/softwaretraining/HelloApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/softwaretraining/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/softwaretraining/PlayController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/initialize/MainInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/initialize/MainInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/objects/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/objects/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/objects/Consumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/objects/Consumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/objects/Source.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rand/Randomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rand/Randomer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com.ui/mainPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/softwaretraining/mainPanel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/softwaretraining/hello-view.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,16 +61,70 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.archetype.catalogs&quot;
   }
 }</component>
-  <component name="RunManager" selected="应用程序.HelloApplication">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\softwareTraining\softwareTraining\src\main\resources\com\example\softwaretraining" />
+      <recent name="D:\softwareTraining\softwareTraining\src\main\resources\com.softwaretraining.main" />
+      <recent name="D:\softwareTraining\softwareTraining\src\main\resources\com.ui" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.softwaretraining" />
+      <recent name="com.softwaretraining.main" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.softwaretraining" />
+    </key>
+  </component>
+  <component name="RunManager" selected="应用程序.com.example.softwaretraining.MainApplication">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.softwaretraining.HelloApplication" />
       <module name="softwareTraining" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.softwaretraining.*" />
+          <option name="PATTERN" value="com.ui.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ui.main.MainApplication" />
+      <module name="softwareTraining" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ui.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ui.main.MainApplication" />
+      <module name="softwareTraining" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ui.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.example.softwaretraining.MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.softwaretraining.MainApplication" />
+      <module name="softwareTraining" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.initialize.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -89,10 +155,15 @@
     </configuration>
     <list>
       <item itemvalue="LaTeX.model" />
+      <item itemvalue="应用程序.MainApplication" />
+      <item itemvalue="应用程序.com.example.softwaretraining.MainApplication" />
       <item itemvalue="应用程序.HelloApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.com.example.softwaretraining.MainApplication" />
+        <item itemvalue="应用程序.MainApplication" />
+        <item itemvalue="应用程序.com.example.softwaretraining.MainApplication" />
         <item itemvalue="应用程序.HelloApplication" />
         <item itemvalue="LaTeX.model" />
       </list>
@@ -128,6 +199,8 @@
       <workItem from="1679295777858" duration="7939000" />
       <workItem from="1679308364491" duration="11142000" />
       <workItem from="1679324243575" duration="713000" />
+      <workItem from="1679385616402" duration="46621000" />
+      <workItem from="1679487334498" duration="76000" />
     </task>
     <task id="LOCAL-00001" summary="需求分析文档">
       <created>1679295882772</created>
@@ -136,7 +209,21 @@
       <option name="project" value="LOCAL" />
       <updated>1679295882772</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="前端UI界面">
+      <created>1679385664031</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1679385664031</updated>
+    </task>
+    <task id="LOCAL-00003" summary="前端UI界面">
+      <created>1679385718155</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1679385718156</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,6 +242,17 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="需求分析文档" />
-    <option name="LAST_COMMIT_MESSAGE" value="需求分析文档" />
+    <MESSAGE value="前端UI界面" />
+    <option name="LAST_COMMIT_MESSAGE" value="前端UI界面" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalStateException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

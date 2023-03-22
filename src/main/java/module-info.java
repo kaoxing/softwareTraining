@@ -5,4 +5,6 @@ module com.example.softwaretraining {
 
     opens com.example.softwaretraining to javafx.fxml;
     exports com.example.softwaretraining;
+    exports com.initialize;
+    opens com.initialize to javafx.fxml;
 }

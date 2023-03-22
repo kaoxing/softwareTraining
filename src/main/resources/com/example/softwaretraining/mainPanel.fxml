@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.44" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="676.0" prefWidth="1103.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.softwaretraining.MainController">
+   <items>
+      <SplitPane dividerPositions="0.2025462962962963, 0.2534722222222222, 0.42592592592592593" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+        <items>
+          <AnchorPane minHeight="168.0" minWidth="405.0" prefHeight="168.0" prefWidth="405.0">
+               <children>
+                  <TextField fx:id="consumerInput" layoutX="21.0" layoutY="14.0" onKeyTyped="#consumerInputChanged" prefHeight="36.0" prefWidth="187.0" promptText="客户数：" />
+                  <TextField fx:id="sourceInput" layoutX="274.0" layoutY="14.0" onKeyTyped="#sourceInputChanged" prefHeight="36.0" prefWidth="187.0" promptText="资源数：" />
+                  <TextField fx:id="seedInput" layoutX="21.0" layoutY="67.0" prefHeight="36.0" prefWidth="440.0" promptText="种子(随机则不输入)：" />
+                  <Button fx:id="initButton" layoutX="21.0" layoutY="118.0" mnemonicParsing="false" onAction="#onInitButton" prefHeight="36.0" prefWidth="137.0" text="进行初始化" />
+                  <Button fx:id="clearButton" layoutX="174.0" layoutY="118.0" mnemonicParsing="false" onAction="#onClearButton" prefHeight="36.0" prefWidth="137.0" text="清空" />
+                  <Button fx:id="generateButton" layoutX="324.0" layoutY="118.0" mnemonicParsing="false" onAction="#onGenerateButton" prefHeight="36.0" prefWidth="137.0" text="生成安全序列" />
+               </children>
+            </AnchorPane>
+            <Label prefHeight="106.0" prefWidth="36.0" text="银行" />
+            <TitledPane animated="false" prefHeight="683.0" prefWidth="405.0" text=" 拥有资源表">
+               <content>
+                  <TableView fx:id="bankSourceTable" prefHeight="35.0" prefWidth="477.0" />
+               </content>
+            </TitledPane>
+            <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="420.0" prefWidth="405.0">
+               <items>
+                  <ComboBox fx:id="consumerComboBox" onAction="#consumerBoxSelect" prefHeight="36.0" prefWidth="677.0" />
+                  <SplitPane dividerPositions="0.3333333333333333, 0.6666666666666666" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+                    <items>
+                        <TitledPane animated="false" prefHeight="388.0" prefWidth="400.0" text="所需资源表">
+                           <content>
+                              <TableView fx:id="consumerNeedSourceTable" prefHeight="200.0" prefWidth="200.0" />
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" prefHeight="388.0" prefWidth="400.0" text="已有资源表">
+                           <content>
+                              <TableView fx:id="consumerPossessSourceTable" prefHeight="200.0" prefWidth="200.0" />
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" prefHeight="388.0" prefWidth="400.0" text="所需时间表">
+                           <content>
+                              <TableView fx:id="consumerSourceTimeTable" prefHeight="200.0" prefWidth="200.0" />
+                           </content>
+                        </TitledPane>
+                    </items>
+                  </SplitPane>
+               </items>
+            </SplitPane>
+        </items>
+      </SplitPane>
+      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+        <items>
+            <Label fx:id="safeOrderLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="875.0" text="安全序列" />
+            <TableView fx:id="safeOrderTable" prefHeight="631.0" prefWidth="790.0" />
+        </items>
+      </SplitPane>
+   </items>
+</SplitPane>

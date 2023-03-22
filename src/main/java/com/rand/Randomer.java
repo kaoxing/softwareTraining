@@ -19,7 +19,7 @@ public class Randomer{
         this.limit = limit;
     }
     public int nextInt(int limit){
-        return rand.nextInt()%limit;
+        return rand.nextInt(limit);
     }
     public int nextInt(){
         return nextInt(limit);
