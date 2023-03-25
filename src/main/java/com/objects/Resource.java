@@ -4,9 +4,11 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Resource implements Comparable<Resource>{
     public String sourceName;   //资源名
-    public SimpleStringProperty sourceCount=new SimpleStringProperty();   //存储资源数量,以便后续放入表中
 
-    public SimpleStringProperty sourceTime=new SimpleStringProperty();    //存储资源时间,以便后续放入表中
+    public int sourceCount; //资源数量
+
+    public int sourceTime;  //资源时间
+
     public Resource(String name) {
         this.sourceName = name;
     }
@@ -22,25 +24,27 @@ public class Resource implements Comparable<Resource>{
     }
 
     public void setCnt(int x){
-        sourceCount.set(String.valueOf(x));
+        sourceCount=x;
     }
 
     public int getCnt(){
-        return Integer.parseInt(sourceCount.get());
-    }
-    public SimpleStringProperty getCntProperty(){
         return sourceCount;
     }
+
+    public SimpleStringProperty getCntProperty(){
+        return new SimpleStringProperty(String.valueOf(sourceCount));
+    }
+
     public void setTime(int x){
-        sourceTime.set(String.valueOf(x));
+        sourceTime=x;
     }
 
     public int getTime(){
-        return Integer.parseInt(sourceTime.get());
+        return sourceTime;
     }
 
     public SimpleStringProperty getTimeProperty(){
-        return sourceTime;
+        return new SimpleStringProperty(String.valueOf(sourceTime));
     }
 
     public Resource clone(){

@@ -1,4 +1,4 @@
-package com.validCheck;
+package com.example.softwaretraining;
 
 public class Checker {
     static public boolean isNumber(String str){

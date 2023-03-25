@@ -2,14 +2,14 @@ package com.initialize;
 
 import com.example.softwaretraining.MainController;
 import com.objects.*;
-import com.rand.Randomer;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 
+import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashSet;
+import java.util.Random;
 
 
 public class MainInitializer {
@@ -17,17 +17,16 @@ public class MainInitializer {
 
     private int consumerCnt,sourceCnt;  //客户数和资源种数
     private Bank theBank;   //银行对象
-    private HashSet<Consumer> consumerTable;    //客户列表
-    private HashSet<Resource> resourceTable;    //资源列表
-    private Randomer rand;
+    private ArrayList<Consumer> consumerTable;    //客户列表
+    private ArrayList<Resource> resourceTable;    //资源列表
+    private Random rand;
     private int sourceLimit;//客户初始能够拥有资源或需求资源上限,应当大于0
     private int timeLimit;//客户所需占用资源的时间上限，应当大于0
-    final private int MAX=10000;//限制随机数，以免值溢出
+    final private int MAX=10;//限制随机数，以免值溢出
 
     private ObservableList<SourceList> data=FXCollections.observableArrayList();    //银行初始化资源列表
     private MainController mainController;
     public MainInitializer(MainController mainController){
-        rand=new Randomer();
         this.mainController=mainController;
     }
 
@@ -38,7 +37,9 @@ public class MainInitializer {
 //        System.out.println(seed);
         this.consumerCnt=consumerCnt;
         this.sourceCnt=sourceCnt;
+        rand=new Random();
         rand.setSeed(seed);
+        System.out.println(seed);
         sourceLimit = rand.nextInt(MAX)+1;
         timeLimit = rand.nextInt(MAX)+1;
         return seed;
@@ -48,22 +49,22 @@ public class MainInitializer {
         return this.set(ConsumerCnt,SourceCnt,(int)System.currentTimeMillis());
     }
 
-    private void sourceInit(){
+    private void resourceInit(){
         //初始化所有资源，并放入资源列表中
-        resourceTable = new HashSet<>();
+        resourceTable = new ArrayList<>();
         for(int i=0;i<sourceCnt;i++){
             resourceTable.add(new Resource(String.format("资源%03d",i)));
         }
     }
     private void consumerInit(){
         //初始化所有客户，并放入客户列表中
-        consumerTable=new HashSet<>();
+        consumerTable=new ArrayList<>();
         for(int i=0;i<consumerCnt;i++){
             Consumer con =new Consumer(String.format("客户%03d",i));
             for(Resource s: resourceTable){
-                con.sourcePossessTable.put(s,rand.nextInt(sourceLimit));
-                con.sourceNeedTable.put(s,rand.nextInt(sourceLimit));
-                con.sourceTimeTable.put(s,rand.nextInt(timeLimit));
+                con.getResourcePossessTable().put(s,rand.nextInt(sourceLimit));
+                con.getResourceNeedTable().put(s,rand.nextInt(sourceLimit));
+                con.getResourceTimeTable().put(s,rand.nextInt(timeLimit));
             }
             consumerTable.add(con);
         }
@@ -73,10 +74,10 @@ public class MainInitializer {
         //初始化银行
         theBank=new Bank("银行");
         for(Consumer c:consumerTable){
-            theBank.consumerTable.add(c);
+            theBank.getConsumerTable().add(c);
         }
         for(Resource s: resourceTable){
-            theBank.sourceTable.put(s,rand.nextInt(sourceLimit*consumerCnt));
+            theBank.getSourceTable().put(s,rand.nextInt(sourceLimit*consumerCnt));
         }
     }
 
@@ -84,17 +85,17 @@ public class MainInitializer {
         return theBank;
     }
 
-    public HashSet<Consumer> getConsumerTable() {
+    public ArrayList<Consumer> getConsumerTable() {
         return consumerTable;
     }
 
-    public HashSet<Resource> getSourceTable() {
+    public ArrayList<Resource> getResourceTable() {
         return resourceTable;
     }
 
     public void startInit(){
         //执行初始化操作
-        sourceInit();
+        resourceInit();
         consumerInit();
         bankInit();
     }
@@ -114,19 +115,19 @@ public class MainInitializer {
                 //加入客户后排序
                 @Override
                 public int compare(Consumer o1, Consumer o2) {
-                    return o1.consumerName.compareTo(o2.consumerName);
+                    return o1.getConsumerName().compareTo(o2.getConsumerName());
                 }
             });
             //初始化银行资源表
-            SourceList sourceList = new SourceList(theBank.sourceTable);
+            SourceList sourceList = new SourceList(theBank.getSourceTable());
             data.add(sourceList);
 
             TableColumn<SourceList,String> tc;
             int i=0;
             for(Resource s:sourceList.resourceList){
 
-                System.out.print(i+":");
-                System.out.println(sourceList.resourceList[i]);
+//                System.out.print(i+":");
+//                System.out.println(sourceList.resourceList[i]);
                 tc = new TableColumn<>(s.toString());
                 int finalI1 = i;
                 tc.setCellValueFactory(cellData-> cellData.getValue().getCntProperty(finalI1));

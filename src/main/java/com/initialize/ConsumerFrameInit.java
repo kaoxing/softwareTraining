@@ -38,7 +38,7 @@ public class ConsumerFrameInit {
     }
     public void initPossess(){
         //初始化客户拥有资源表
-        sourcePossessList = new SourceList(consumer.sourcePossessTable);
+        sourcePossessList = new SourceList(consumer.getResourcePossessTable());
         sourcePossessData.add(sourcePossessList);
         TableColumn<SourceList,String> tc;
         int i=0;
@@ -53,7 +53,7 @@ public class ConsumerFrameInit {
     }
     public void initNeed(){
         //初始化客户需要资源表
-        sourceNeedList = new SourceList(consumer.sourceNeedTable);
+        sourceNeedList = new SourceList(consumer.getResourceNeedTable());
         sourceNeedData.add(sourceNeedList);
         TableColumn<SourceList,String> tc;
         int i=0;
@@ -68,7 +68,7 @@ public class ConsumerFrameInit {
     }
     public void initTime(){
         //初始化客户资源时间表
-        sourceTimeList = new SourceList(consumer.sourceTimeTable);
+        sourceTimeList = new SourceList(consumer.getResourceTimeTable());
         sourceTimeData.add(sourceTimeList);
         TableColumn<SourceList,String> tc;
         int i=0;

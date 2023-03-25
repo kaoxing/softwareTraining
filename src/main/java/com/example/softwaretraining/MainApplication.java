@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Random;
 
 public class MainApplication extends Application {
     MainController controller;
@@ -22,6 +23,7 @@ public class MainApplication extends Application {
     }
     public static void main(String[] args){
         launch(args);
+
     }
 
 }

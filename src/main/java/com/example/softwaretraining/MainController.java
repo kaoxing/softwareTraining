@@ -1,14 +1,13 @@
 package com.example.softwaretraining;
 
+import com.generate.ConsumerList;
 import com.generate.SafeOrderGenerate;
 import com.initialize.ConsumerFrameInit;
 import com.initialize.MainInitializer;
 import com.initialize.SourceList;
 import com.objects.Bank;
 import com.objects.Consumer;
-import com.validCheck.Checker;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -19,7 +18,7 @@ public class MainController {
     public ComboBox<Consumer> consumerComboBox;
 
     @FXML
-    public TableView<?> safeOrderTable;
+    public TableView<ConsumerList> safeOrderTable;
 
     @FXML
     public TableView<SourceList> consumerPossessSourceTable;
@@ -59,7 +58,7 @@ public class MainController {
 
     private MainInitializer initializer=new MainInitializer(this);
     private ConsumerFrameInit consumerFrameInit =new ConsumerFrameInit(this);//初始化并显示用户表
-    private SafeOrderGenerate safeOrderGenerate =new SafeOrderGenerate(this);//序列生成器
+    private SafeOrderGenerate safeOrderGenerate;//序列生成器
     @FXML
     void consumerInputChanged() {
         //限制输入个数最多为999
@@ -79,7 +78,7 @@ public class MainController {
     }
 
     @FXML
-    void onInitButton(ActionEvent event) {
+    void onInitButton() {
         //初始化按钮点击函数
 //        addToCombo(new Consumer("kaoxing"+System.currentTimeMillis()));
         //检查输入有效性
@@ -136,8 +135,13 @@ public class MainController {
     @FXML
     void onGenerateButton() {
         //生成安全序列
-        safeOrderGenerate.set(initializer);
-        safeOrderGenerate.start();
+//        System.out.println("here");
+        Platform.runLater(()->{
+            safeOrderGenerate = new SafeOrderGenerate(this);
+            safeOrderGenerate.set(initializer);
+            safeOrderGenerate.start();
+        });
+
     }
 
 
@@ -153,6 +157,7 @@ public class MainController {
 
     public void initialize(){
         //窗口初始化设置函数
+
         onClearButton();
     }
 
