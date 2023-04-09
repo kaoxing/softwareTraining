@@ -24,7 +24,7 @@ public class MainInitializer {
     private int timeLimit;//客户所需占用资源的时间上限，应当大于0
     final private int MAX=10;//限制随机数，以免值溢出
 
-    private ObservableList<SourceList> data=FXCollections.observableArrayList();    //银行初始化资源列表
+    private ObservableList<ResourceList> data=FXCollections.observableArrayList();    //银行初始化资源列表
     private MainController mainController;
     public MainInitializer(MainController mainController){
         this.mainController=mainController;
@@ -40,8 +40,8 @@ public class MainInitializer {
         rand=new Random();
         rand.setSeed(seed);
         System.out.println(seed);
-        sourceLimit = rand.nextInt(MAX)+1;
-        timeLimit = rand.nextInt(MAX)+1;
+        sourceLimit = rand.nextInt(MAX)+2;
+        timeLimit = rand.nextInt(MAX)+2;
         return seed;
     }
 
@@ -77,7 +77,7 @@ public class MainInitializer {
             theBank.getConsumerTable().add(c);
         }
         for(Resource s: resourceTable){
-            theBank.getSourceTable().put(s,rand.nextInt(sourceLimit*consumerCnt));
+            theBank.getResourceTable().put(s,rand.nextInt(sourceLimit*consumerCnt));
         }
     }
 
@@ -115,14 +115,14 @@ public class MainInitializer {
                 //加入客户后排序
                 @Override
                 public int compare(Consumer o1, Consumer o2) {
-                    return o1.getConsumerName().compareTo(o2.getConsumerName());
+                    return o1.toString().compareTo(o2.toString());
                 }
             });
             //初始化银行资源表
-            SourceList sourceList = new SourceList(theBank.getSourceTable());
+            ResourceList sourceList = new ResourceList(theBank.getResourceTable());
             data.add(sourceList);
 
-            TableColumn<SourceList,String> tc;
+            TableColumn<ResourceList,String> tc;
             int i=0;
             for(Resource s:sourceList.resourceList){
 

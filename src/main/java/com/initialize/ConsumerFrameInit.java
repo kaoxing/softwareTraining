@@ -9,10 +9,10 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 
 public class ConsumerFrameInit {
-    private SourceList sourcePossessList,sourceNeedList,sourceTimeList;
-    private ObservableList<SourceList> sourcePossessData= FXCollections.observableArrayList();
-    private ObservableList<SourceList> sourceNeedData= FXCollections.observableArrayList();
-    private ObservableList<SourceList> sourceTimeData= FXCollections.observableArrayList();
+    private ResourceList sourcePossessList,sourceNeedList,sourceTimeList;
+    private ObservableList<ResourceList> sourcePossessData= FXCollections.observableArrayList();
+    private ObservableList<ResourceList> sourceNeedData= FXCollections.observableArrayList();
+    private ObservableList<ResourceList> sourceTimeData= FXCollections.observableArrayList();
     private MainController mainController;
     private Consumer consumer;
     public ConsumerFrameInit(MainController mainController){
@@ -36,11 +36,11 @@ public class ConsumerFrameInit {
 
         });
     }
-    public void initPossess(){
+    private void initPossess(){
         //初始化客户拥有资源表
-        sourcePossessList = new SourceList(consumer.getResourcePossessTable());
+        sourcePossessList = new ResourceList(consumer.getResourcePossessTable());
         sourcePossessData.add(sourcePossessList);
-        TableColumn<SourceList,String> tc;
+        TableColumn<ResourceList,String> tc;
         int i=0;
         for(Resource s:sourcePossessList.resourceList){
             tc = new TableColumn<>(s.toString());
@@ -51,11 +51,11 @@ public class ConsumerFrameInit {
         }
         mainController.consumerPossessSourceTable.setItems(sourcePossessData);
     }
-    public void initNeed(){
+    private void initNeed(){
         //初始化客户需要资源表
-        sourceNeedList = new SourceList(consumer.getResourceNeedTable());
+        sourceNeedList = new ResourceList(consumer.getResourceNeedTable());
         sourceNeedData.add(sourceNeedList);
-        TableColumn<SourceList,String> tc;
+        TableColumn<ResourceList,String> tc;
         int i=0;
         for(Resource s:sourceNeedList.resourceList){
             tc = new TableColumn<>(s.toString());
@@ -66,11 +66,11 @@ public class ConsumerFrameInit {
         }
         mainController.consumerNeedSourceTable.setItems(sourceNeedData);
     }
-    public void initTime(){
+    private void initTime(){
         //初始化客户资源时间表
-        sourceTimeList = new SourceList(consumer.getResourceTimeTable());
+        sourceTimeList = new ResourceList(consumer.getResourceTimeTable());
         sourceTimeData.add(sourceTimeList);
-        TableColumn<SourceList,String> tc;
+        TableColumn<ResourceList,String> tc;
         int i=0;
         for(Resource s:sourceTimeList.resourceList){
             tc = new TableColumn<>(s.toString());

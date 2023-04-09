@@ -9,4 +9,11 @@ public class Checker {
         }
         return true;
     }
+
+    static public String shrink(String str,int limit){
+        if (str.length() > limit) {
+            return str.substring(0, limit+1);
+        }
+        return str;
+    }
 }

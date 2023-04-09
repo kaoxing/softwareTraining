@@ -3,11 +3,11 @@ package com.objects;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Resource implements Comparable<Resource>{
-    public String sourceName;   //资源名
+    private String sourceName;   //资源名
 
-    public int sourceCount; //资源数量
+    private int sourceCount; //资源数量
 
-    public int sourceTime;  //资源时间
+    private int sourceTime;  //资源时间
 
     public Resource(String name) {
         this.sourceName = name;

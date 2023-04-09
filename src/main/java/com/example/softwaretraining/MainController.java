@@ -4,7 +4,7 @@ import com.generate.ConsumerList;
 import com.generate.SafeOrderGenerate;
 import com.initialize.ConsumerFrameInit;
 import com.initialize.MainInitializer;
-import com.initialize.SourceList;
+import com.initialize.ResourceList;
 import com.objects.Bank;
 import com.objects.Consumer;
 import javafx.application.Platform;
@@ -21,7 +21,7 @@ public class MainController {
     public TableView<ConsumerList> safeOrderTable;
 
     @FXML
-    public TableView<SourceList> consumerPossessSourceTable;
+    public TableView<ResourceList> consumerPossessSourceTable;
 
     @FXML
     public Button generateButton;
@@ -33,10 +33,10 @@ public class MainController {
     public Label safeOrderLabel;
 
     @FXML
-    public TableView<SourceList> consumerNeedSourceTable;
+    public TableView<ResourceList> consumerNeedSourceTable;
 
     @FXML
-    public TableView<SourceList> consumerSourceTimeTable;
+    public TableView<ResourceList> consumerSourceTimeTable;
 
     @FXML
     public Button clearButton;
@@ -45,7 +45,7 @@ public class MainController {
     public TextField sourceInput;
 
     @FXML
-    public TableView<SourceList> bankSourceTable;
+    public TableView<ResourceList> bankSourceTable;
 
     @FXML
     public Button initButton;
@@ -60,25 +60,19 @@ public class MainController {
     private ConsumerFrameInit consumerFrameInit =new ConsumerFrameInit(this);//初始化并显示用户表
     private SafeOrderGenerate safeOrderGenerate;//序列生成器
     @FXML
-    void consumerInputChanged() {
-        //限制输入个数最多为999
-        if (consumerInput.getText().length() > 2) {
-            String s = consumerInput.getText().substring(0, 2);
-            consumerInput.setText(s);
-        }
+    public void consumerInputChanged() {
+        //限制输入个数最多为两位
+        consumerInput.setText(Checker.shrink((consumerInput.getText()),1));
     }
 
     @FXML
-    void sourceInputChanged() {
-        //限制输入个数最多为999
-        if (sourceInput.getText().length() > 2) {
-            String s = sourceInput.getText().substring(0, 2);
-            sourceInput.setText(s);
-        }
+    public void sourceInputChanged() {
+        //限制输入个数最多为两位
+        sourceInput.setText(Checker.shrink(sourceInput.getText(),1));
     }
 
     @FXML
-    void onInitButton() {
+    public void onInitButton() {
         //初始化按钮点击函数
 //        addToCombo(new Consumer("kaoxing"+System.currentTimeMillis()));
         //检查输入有效性
@@ -117,8 +111,10 @@ public class MainController {
     }
 
     @FXML
-    void onClearButton() {
+    public void onClearButton() {
         //界面回到初始状态，完全清空
+        safeOrderTable.getColumns().clear();
+        safeOrderLabel.setText("安全序列");
         initializer.clear();
         consumerFrameInit.clear();
         consumerInput.clear();//清空输入和种子
@@ -133,20 +129,19 @@ public class MainController {
     }
 
     @FXML
-    void onGenerateButton() {
+    public void onGenerateButton() {
         //生成安全序列
 //        System.out.println("here");
-        Platform.runLater(()->{
-            safeOrderGenerate = new SafeOrderGenerate(this);
-            safeOrderGenerate.set(initializer);
-            safeOrderGenerate.start();
-        });
+        safeOrderGenerate = new SafeOrderGenerate(this);
+        safeOrderGenerate.set(initializer);
+        Thread thread = new Thread(safeOrderGenerate);
+        thread.start();
 
     }
 
 
     @FXML
-    void consumerBoxSelect() {
+    public void consumerBoxSelect() {
         //选择了某个客户
 //        System.out.println("selected");
         Consumer selectedConsumer = consumerComboBox.getValue();
@@ -157,11 +152,10 @@ public class MainController {
 
     public void initialize(){
         //窗口初始化设置函数
-
         onClearButton();
     }
 
-    public void addToCombo(Consumer consumer){
+    private void addToCombo(Consumer consumer){
         //向Combobox内加入客户
         Platform.runLater(()->{
             consumerComboBox.getItems().add(consumer);

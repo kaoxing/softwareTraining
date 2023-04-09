@@ -5,21 +5,21 @@ import com.initialize.MainInitializer;
 import com.objects.Bank;
 import com.objects.Consumer;
 import com.objects.Resource;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 
 import java.util.*;
-import java.util.concurrent.CopyOnWriteArraySet;
 
-public class SafeOrderGenerate {
+public class SafeOrderGenerate implements Runnable{
     private MainController mainController;
     ObservableList<ConsumerList> showListData= FXCollections.observableArrayList();
     private Bank bank;
     private ArrayList<Consumer> consumers;//所有客户列表
 
     private HashMap<Resource,Integer> resourceMap=new HashMap<>();//可分配资源表
-    private Set<Consumer> unsatisfiedConsumerSet= new CopyOnWriteArraySet<>();//未满足的客户，这里使用的是线程安全的集合，否则会多线程异常
+    private HashMap<Consumer,Boolean> unsatisfiedConsumerSet=new HashMap<>();//未满足的客户，若满足了则key为false
     private PriorityQueue<ResourcePack> resourcesList=new PriorityQueue<>(new Comparator<ResourcePack>() {
         @Override
         public int compare(ResourcePack o1, ResourcePack o2) {
@@ -35,17 +35,21 @@ public class SafeOrderGenerate {
         this.bank=initializer.getBank();
         mainController.safeOrderTable.getColumns().clear();
         consumers= bank.getConsumerTable();
-        TableColumn<ConsumerList,String> tc;
-        for(int i=0;i<consumers.size();i++){
+        Platform.runLater(()->{
+            TableColumn<ConsumerList,String> tc;
+            for(int i=0;i<consumers.size();i++){
 //            System.out.println(i);
-            tc = new TableColumn<>(String.format("第%d个",i));
-            int finalI1 = i;
-            tc.setCellValueFactory(cellData-> cellData.getValue().getNameProperty(finalI1));
+                tc = new TableColumn<>(String.format("第%d个",i));
+                int finalI1 = i;
+                tc.setCellValueFactory(cellData-> cellData.getValue().getNameProperty(finalI1));
+                mainController.safeOrderTable.getColumns().add(tc);
+            }
+            tc = new TableColumn<>("时间");
+            tc.setCellValueFactory(cellData-> cellData.getValue().getTimeProperty());
             mainController.safeOrderTable.getColumns().add(tc);
-        }
-        tc = new TableColumn<>("时间");
-        tc.setCellValueFactory(cellData-> cellData.getValue().getTimeProperty());
-        mainController.safeOrderTable.getColumns().add(tc);
+            System.out.println(1);
+        });
+        System.out.println(2);
         mainController.safeOrderTable.setItems(showListData);
     }
 
@@ -62,41 +66,49 @@ public class SafeOrderGenerate {
         //(3)若不为空则说明目前序列失败，无法完成所有客户
         //(4)若为空则目前序列成功，输出安全序列
         //将当前c拆解的资源取回，并将c加入unsatisfiedConsumerSet中
-        resourceMap= bank.getSourceTable();
+        resourceMap= bank.getResourceTable();
         for(Consumer c:consumers){
-            unsatisfiedConsumerSet.add(c);
+            unsatisfiedConsumerSet.put(c,true);
         }
         for(Consumer c:consumers){
             if(tryMalloc(c,false)) {
 //                System.out.println("START!");
-                search(c, 0, 0);
+                search(c, 0);
             }
         }
         Collections.sort(showListData);
+        Platform.runLater(()->{
+            mainController.safeOrderLabel.setText(String.format("搜索完成，共%d个安全序列",showListData.size()));
+        });
     }
 
-    public void search(Consumer c, int timeCost, int count){
+    public void search(Consumer c, int timeCost){
         //拆解
         int ALLTIME=0;
-        unsatisfiedConsumerSet.remove(c);
+        unsatisfiedConsumerSet.put(c,false);
         breakDownTo(c,resourcesList,timeCost);
         HashSet<Consumer> visited=new HashSet<>();
         stack.add(c);
-        boolean mark=false;
-        if(unsatisfiedConsumerSet.size()==0){
-            //若当前已经是最后一个未满足的客户
-            mark=true;
+        boolean mark=true;//假设当前是最后一个客户
+        for(Consumer con:unsatisfiedConsumerSet.keySet()){
+            //若当前不是最后一个未满足的客户
+            if(unsatisfiedConsumerSet.get(con)){
+                mark=false;
+                break;
+            }
         }
         boolean flag=false;
+        Iterator<Consumer> it;
         while(resourcesList.size()!=0||flag) {
             //若资源列表不为空则继续模拟
             flag = false;
-            for (Consumer con : unsatisfiedConsumerSet) {
+            for (Consumer con:unsatisfiedConsumerSet.keySet()) {
                 if(visited.contains(con))continue;//若已经尝试过该路线，则不去
+                if(!unsatisfiedConsumerSet.get(con))continue;//若当前客户已经满足，也不去
                 if (tryMalloc(con, false)) {//尝试分配资源
                     //若成功
                     flag = true;
-                    search(con,timeCost,count);
+                    search(con,timeCost);
                     visited.add(con);
                 }
             }
@@ -119,24 +131,20 @@ public class SafeOrderGenerate {
         }
         if(mark){
             //若已经是最后一个客户，则生成序列
-            int finalCount = count;
             ConsumerList showList = new ConsumerList(stack,ALLTIME);
             if(!showListData.contains(showList)){
                 showListData.add(showList);
+                Platform.runLater(()->{
+                    mainController.safeOrderLabel.setText(String.format("正在搜索，当前共找到%d个安全序列",showListData.size()));
+                });
             }
 
         }
         returnBack(c,resourceMap);
-        unsatisfiedConsumerSet.add(c);
+        unsatisfiedConsumerSet.put(c,true);
         stack.remove(c);
     }
 
-    private void push(ArrayList<Consumer> stack,ResourcePack pack,int count){
-        if(stack.size()<=count){
-            stack.add(pack.getConsumer());
-        }else
-            stack.set(count,pack.getConsumer());//入栈并记录当前在栈第几个位置
-    }
 
     private boolean tryMalloc(Consumer c,boolean tryIt){
         //若tryIt为true则表示只是试试，不需要真的分配
@@ -159,7 +167,7 @@ public class SafeOrderGenerate {
     private void breakDownTo(Consumer consumer,PriorityQueue<ResourcePack> runningResourceList,int base){
         //拆解某个客户，将其拥有的资源送入runningResourceList中
         for(Resource res: consumer.getResourcePossessTable().keySet()){
-            ResourcePack pack = new ResourcePack(consumer,
+            ResourcePack pack = new ResourcePack(
                     res,
                     consumer.getResourcePossessTable().get(res),
                     consumer.getResourceTimeTable().get(res)+base);
@@ -178,4 +186,8 @@ public class SafeOrderGenerate {
         resources.replaceAll((r, v)->v- finalTemp.get(r));
     }
 
+    @Override
+    public void run() {
+        start();
+    }
 }

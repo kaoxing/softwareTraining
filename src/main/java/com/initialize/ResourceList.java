@@ -6,10 +6,10 @@ import javafx.beans.property.SimpleStringProperty;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class SourceList {
+public class ResourceList {
     //显示资源表，用于在表中显示资源的临时资源列表
     Resource[] resourceList;
-    public SourceList(HashMap<Resource,Integer> sourceTable){
+    public ResourceList(HashMap<Resource,Integer> sourceTable){
 
         resourceList =new Resource[sourceTable.size()];
         int i=0;

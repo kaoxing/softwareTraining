@@ -17,13 +17,10 @@ public class Bank {
         return consumerTable;
     }
 
-    public HashMap<Resource, Integer> getSourceTable() {
+    public HashMap<Resource, Integer> getResourceTable() {
         return sourceTable;
     }
 
-    public String getBankName() {
-        return bankName;
-    }
 
     @Override
     public String toString(){

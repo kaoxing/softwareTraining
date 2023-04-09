@@ -29,15 +29,6 @@ public class ConsumerList implements Comparable<ConsumerList>{
         return new SimpleStringProperty(String.valueOf(time));
     }
     @Override
-    public int hashCode() {
-        int code=0;
-        for(Consumer c:consumerList){
-            code+=c.hashCode()/101;
-        }
-        return code;
-    }
-
-    @Override
     public int compareTo(ConsumerList o) {
         return time-o.time;
     }

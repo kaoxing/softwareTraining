@@ -4,24 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7e0984f-8c1c-4e43-831d-d820f586ac66" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/document/概要设计/document.tex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/generate/ConsumerList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/generate/ResourcePack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/generate/ResourcePackComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="e7e0984f-8c1c-4e43-831d-d820f586ac66" name="Changes" comment="Finished">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/document/需求分析/model.tex" beforeDir="false" afterPath="$PROJECT_DIR$/document/需求分析/model.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/document/需求分析/model.aux" beforeDir="false" afterPath="$PROJECT_DIR$/document/需求分析/model.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/document/需求分析/model.log" beforeDir="false" afterPath="$PROJECT_DIR$/document/需求分析/model.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/document/需求分析/model.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/document/需求分析/model.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/document/需求分析/model.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/document/需求分析/model.synctex.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/softwaretraining/Checker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/softwaretraining/Checker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/softwaretraining/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/softwaretraining/MainApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/softwaretraining/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/softwaretraining/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/generate/ConsumerList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/generate/ConsumerList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/generate/ResourcePack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/generate/ResourcePack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/generate/SafeOrderGenerate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/generate/SafeOrderGenerate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/initialize/ConsumerFrameInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/initialize/ConsumerFrameInit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/initialize/MainInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/initialize/MainInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/initialize/SourceList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/initialize/ResourceList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/objects/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/objects/Bank.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/objects/Consumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/objects/Consumer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/objects/Resource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/objects/Resource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rand/Randomer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/validCheck/Checker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/softwaretraining/Checker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,9 +60,9 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;SDK&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.3034483&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -78,7 +79,7 @@
       <recent name="com.example.softwaretraining" />
     </key>
   </component>
-  <component name="RunManager" selected="LaTeX.model">
+  <component name="RunManager" selected="应用程序.com.example.softwaretraining.MainApplication">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.softwaretraining.HelloApplication" />
       <module name="softwareTraining" />
@@ -160,8 +161,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="LaTeX.model" />
         <item itemvalue="应用程序.com.example.softwaretraining.MainApplication" />
+        <item itemvalue="LaTeX.model" />
         <item itemvalue="应用程序.MainApplication" />
         <item itemvalue="应用程序.HelloApplication" />
       </list>
@@ -204,7 +205,17 @@
       <workItem from="1679714582139" duration="319000" />
       <workItem from="1679715316299" duration="7308000" />
       <workItem from="1679724145691" duration="5791000" />
-      <workItem from="1679734710345" duration="9298000" />
+      <workItem from="1679734710345" duration="9716000" />
+      <workItem from="1679751897430" duration="2604000" />
+      <workItem from="1679817321791" duration="984000" />
+      <workItem from="1679897185948" duration="254000" />
+      <workItem from="1679899764749" duration="9502000" />
+      <workItem from="1680180425392" duration="4804000" />
+      <workItem from="1680369127076" duration="6272000" />
+      <workItem from="1680400674379" duration="193000" />
+      <workItem from="1680400896089" duration="140000" />
+      <workItem from="1680410436884" duration="5380000" />
+      <workItem from="1680414438649" duration="1261000" />
     </task>
     <task id="LOCAL-00001" summary="需求分析文档">
       <created>1679295882772</created>
@@ -234,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679487420438</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Finished">
+      <created>1679747838047</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1679747838047</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,7 +273,8 @@
     <MESSAGE value="需求分析文档" />
     <MESSAGE value="前端UI界面" />
     <MESSAGE value="仅剩算法部分" />
-    <option name="LAST_COMMIT_MESSAGE" value="仅剩算法部分" />
+    <MESSAGE value="Finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

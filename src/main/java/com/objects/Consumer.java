@@ -16,9 +16,6 @@ public class Consumer {
         resourceTimeTable =new HashMap<>();
     }
 
-    public String getConsumerName() {
-        return consumerName;
-    }
 
     public HashMap<Resource, Integer> getResourceNeedTable() {
         return resourceNeedTable;

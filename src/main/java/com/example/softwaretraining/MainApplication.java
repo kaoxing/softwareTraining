@@ -5,7 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Random;
+
 
 public class MainApplication extends Application {
     MainController controller;
@@ -15,7 +15,7 @@ public class MainApplication extends Application {
         controller=fxmlLoader.getController();
 
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Test");
+        stage.setTitle("银行家算法模拟系统");
         stage.setScene(scene);
         stage.setResizable(false);
 
